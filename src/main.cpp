@@ -1,26 +1,62 @@
-void test_all_features();
-void led_activity();
-void delay_activity();
-void sound_activity();
-void variables_activity();
-void loop_activity();
-void conditionals_activity();
-void badge_activity();
+#include "ybadge.h"
+#include <stdlib.h>
+void playMusic();
+void wheelGame();
+void rickBomb();
 
 int main() {
-  // This function should call ONE of the functions below.
-  // Uncomment or comment the lines so that just the function
-  // you want to call is uncommented.
+  int defaultG = rand() % 100;
+  int defaultB = rand() % 100;
+  while (true)
+  {
+    //wait for input
+    while(!(buttons_get(1) || buttons_get(2) || buttons_get(3)))
+    {
+      for (int i=0; i<=200; i++)
+      {
+        delay(1);
+        if ((buttons_get(1) || buttons_get(2) || buttons_get(3)))
+        {
+          //override the for loop
+          i = 1020;
+        }
+      }
+      
+      //lights
+      for (int i=0; i<=20; i++)
+      {
+        defaultG++;
+        defaultB++;
 
-  test_all_features();
-  // led_activity();
-  // delay_activity();
-  // sound_activity();
-  // variables_activity();
-  // loop_activity();
-  // conditionals_activity();
-  // badge_activity();
+        if (defaultG > 100)
+        {
+          defaultG = 0;
+        }
+        if (defaultB > 100)
+        {
+          defaultB = 0;
+        }
 
-  while (1)
-    ;
+        leds_set_color(i, 0, defaultG, defaultB);
+      }
+    }
+
+    //options menu yay
+    if (switches_get(1) && switches_get(2))
+    {
+      playMusic();
+    }
+    else if (switches_get(1) && !switches_get(2))
+    {
+      rickBomb();
+    }
+    else if (!switches_get(1) && switches_get(2))
+    {
+      wheelGame();
+    }
+    else if (!switches_get(1) && !switches_get(2))
+    {
+      //do nothing
+    }
+  }
 }

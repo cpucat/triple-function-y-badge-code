@@ -89,6 +89,7 @@ void speaker_play_note(unsigned int freq, unsigned long duration);
 /*
 *  These constant values are used to specify the frequency of a note to be played on the speaker.
 */
+#define REST 0
 #define NOTE_B0 31
 #define NOTE_C1 33
 #define NOTE_CS1 35
