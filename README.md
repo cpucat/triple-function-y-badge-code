@@ -1,3 +1,7 @@
 # y-badge-code
 
-Click this [link](https://byu-cpe.github.io/y-badge/) for instructions on how to program your Y-badge using this code base.
+this is some code i wrote for BYU STEM CAMP 2023
+it won 1st in our badge coding contest somehow despite sucking
+
+all music code is from https://github.com/robsoncouto/arduino-songs
+
